@@ -1,0 +1,29 @@
+{
+  "name": "@modelcontextprotocol/server-cloudflare",
+  "version": "0.0.1",
+  "description": "MCP server for interacting with Cloudflare",
+  "license": "MIT",
+  "author": "Cloudflare Workers (https://workers.cloudflare.com)",
+  "homepage": "https://modelcontextprotocol.io",
+  "bugs": "https://github.com/cloudflare/mcp-servers/issues",
+  "type": "module",
+  "bin": {
+    "mcp-server-cloudflare": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && shx chmod +x dist/*.js",
+    "prepare": "npm run build",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "0.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.3",
+    "shx": "^0.3.4",
+    "typescript": "^5.6.2"
+  }
+}
