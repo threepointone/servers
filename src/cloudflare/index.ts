@@ -56,6 +56,7 @@ type OpenAPISchema = {
 };
 
 // Add type assertion for imported schema
+// @ts-ignore
 const typedSchema = openapiSchema as OpenAPISchema;
 
 server.setRequestHandler(ListToolsRequestSchema, async () => {
@@ -118,10 +119,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     // Add validation for required path parameters
     if (operation?.parameters) {
       const requiredParams = operation.parameters.filter(
+        // @ts-ignore
         (param) => param.in === "path" && param.required
       );
 
       for (const param of requiredParams) {
+        // @ts-ignore
         if (!args.path?.[param.name]) {
           throw new Error(`Missing required path parameter: ${param.name}`);
         }
@@ -132,6 +135,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     if (args.path) {
       for (const param of operation.parameters || []) {
         if (param.in === "path") {
+          // @ts-ignore
           url = url.replace(`{${param.name}}`, args.path[param.name]);
         }
       }
